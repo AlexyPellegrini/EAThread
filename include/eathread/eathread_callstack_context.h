@@ -146,6 +146,12 @@ namespace EA
 				CallstackContextSPU() : mGPR0(0), mGPR1(0) {}
 			};
 
+		#if defined(EA_PROCESSOR_WASM)
+			struct CallstackContext : public CallstackContextBase
+			{
+				static const CallstackContextType kType = CALLSTACK_CONTEXT_UNKNOWN;
+			};
+		#endif
 
 		union VMXRegister
 		{

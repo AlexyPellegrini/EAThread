@@ -90,7 +90,7 @@ namespace Thread
 			pthread_attr_t attr;
 			pthread_attr_init(&attr);
 
-			#if defined(EA_PLATFORM_LINUX)
+			#if defined(EA_PLATFORM_LINUX) || defined(EA_PLATFORM_WASM)
 				int result = pthread_getattr_np(pthread_self(), &attr);
 			#else
 				int result = pthread_attr_get_np(pthread_self(), &attr); // __BSD__ or __FreeBSD__
